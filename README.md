@@ -3,11 +3,11 @@
 MIT License
 
 Copyright (c) 2021
-Dathan Rivera
-Cailin Touseull
-Megan Lechner
-Sandy Hadley
-Devona Walters
+Dathan Rivera,
+Cailin Touseull,
+Megan Lechner,
+Sandy Hadley,
+Devona Walters,
 Logan Smalley
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
