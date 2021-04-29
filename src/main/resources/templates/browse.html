@@ -6,18 +6,18 @@
 </head>
 <body>
 
-<div th:include="index :: navbar"></div>
+<!-- do i need to code something to include nav bar?-->
 
 <h1>Browse Businesses</h1>
 
-<button onclick=""goBack()">Go Back</button>
+<button onclick="goBack()">Go Back</button>
 <script>
     function goBack(){
     window.history.back();
     }
 </script>
 
-<!--based off of techjobs-mvc so not sure if this is 100% accurate-->>
+
 <table>
 
     <tr>
@@ -34,30 +34,27 @@
         </ul>
     </tr>
 
-        <!--i want to have titles then clickable labels for specified categories and have it repeat-->>
-    <!--so this appears once a label is clicked-->>
-
-    <th:block> <!-- th:each="placeholder:${placeholder}>-->>
+    <th:block> <!-- th:each="placeholder:${placeholder}>-->
     <tr>
-        <!--td th:text="${ownership tag}"-->>
+        <!--td th:text="${ownership tag}"-->
 
         <th>Business Name: </th>
-        <!--td th:text="${placeholder}"-->>
+        <!--td th:text="${placeholder}"-->
 
         <th>Hours: </th>
-        <!--td th:text="${placeholder}"-->>
+        <!--td th:text="${placeholder}"-->
 
         <th>Address: </th>
-        <!--td th:text="${placeholder}"-->>
+        <!--td th:text="${placeholder}"-->
 
         <th>Phone Number: </th>
-        <!--td th:text="${placeholder}"-->>
+        <!--td th:text="${placeholder}"-->
 
         <th>Website: </th>
-        <!--td th:text="${placeholder}"-->>
+        <!--td th:text="${placeholder}"-->
 
         <th>Email: </th>
-        <!--td th:text="${placeholder}"-->>
+        <!--td th:text="${placeholder}"-->
 
     </tr>
     </th:block>
