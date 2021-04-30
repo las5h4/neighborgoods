@@ -34,9 +34,12 @@ public class Business {
 
     private String businessCategory;
 
+    private String businessSubCategory;
+
     public Business () {};
     public Business (String businessName, String streetAddress, String city, String state, int zipCode,
-                     String phoneNumber, String website, String ownerName, String email, String ownerType, String businessCategory){
+                     String phoneNumber, String website, String ownerName, String email, String ownerType,
+                     String businessCategory, String businessSubCategory){
         this.businessName = businessName;
         this.streetAddress = streetAddress;
         this.city = city;
@@ -48,6 +51,7 @@ public class Business {
         this.email = email;
         this.ownerType = ownerType;
         this.businessCategory = businessCategory;
+        this.businessSubCategory = businessSubCategory;
     }
 
     public int getId() {
@@ -146,5 +150,12 @@ public class Business {
         this.businessCategory = businessCategory;
     }
 
+    public String getBusinessSubCategory() {
+        return businessSubCategory;
+    }
+
+    public void setBusinessSubCategory(String businessSubCategory) {
+        this.businessSubCategory = businessSubCategory;
+    }
 
 }
