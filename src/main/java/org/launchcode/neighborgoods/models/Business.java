@@ -1,9 +1,11 @@
 package org.launchcode.neighborgoods.models;
 
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import java.util.Objects;
 
-
+@Entity
 public class Business {
 
     @Id
@@ -158,4 +160,16 @@ public class Business {
         this.businessSubCategory = businessSubCategory;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Business)) return false;
+        Business business = (Business) o;
+        return businessName.equals(business.businessName) && Objects.equals(streetAddress, business.streetAddress);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(businessName, streetAddress);
+    }
 }
