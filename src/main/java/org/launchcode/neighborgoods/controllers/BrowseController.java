@@ -1,44 +1,34 @@
 package org.launchcode.neighborgoods.controllers;
 
+import org.launchcode.neighborgoods.models.BusinessTypes;
+import org.launchcode.neighborgoods.models.Categories;
+import org.launchcode.neighborgoods.models.SubCategories;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
-import java.util.HashMap;
 
 @Controller
-@RequestMapping(value = "browse")
+@RequestMapping("browse")
 public class BrowseController {
 
-    static HashMap<String, String> categoryType = new HashMap<>();
-    static HashMap<String, String> categorySubType = new HashMap<>();
-
-    public BrowseController(){
-        categoryType.put("all", "All");
-        categoryType.put("restaurants", "Restaurants");
-        categoryType.put("retail", "Retail");
-        categoryType.put("home repair", "Home Repair");
-        categoryType.put("salons", "Salons");
-
-        categorySubType.put("breakfast", "Breakfast");
-        categorySubType.put("coffee", "Coffee/Tea");
-
-    }
-
-    @RequestMapping(value="")
-    public String browse(Model model){
-       // model.addAttribute("rows", categoryType);
-        //fill in once data is figured out
+    @GetMapping
+    public String displayAllBusinesses(Model model){
+        model.addAttribute("categories", Categories.values());
+        model.addAttribute("subcategories", SubCategories.values());
 
         return "browse";
     }
 
-    @RequestMapping(value="")
-    public String browseByCategorySubType(Model model){
-        //this part will render a different view based on which subcategory the user clicks
-        //this part depends on where data is being pulled from
 
-        return "";
+    @GetMapping("business")
+    public String browseByCategorySubType(Model model, @RequestParam String column, @RequestParam String value){
+
+
+        return "business";
     }
 
 }
