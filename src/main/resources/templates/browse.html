@@ -13,20 +13,15 @@
 
 <table class="centeredTable">
     <tr>
-        <th:block th:each="category : ${categories}">
-            <th th:text = "${category.categoryName}">
-            <a th:href="@{/business}" th:text="${category}"></a>
-            </th>
-        </th:block>
-    </tr>
-
-    <td th:each="category : ${categories}">
+        <td th:each="category : ${categories}">
         <ul>
             <li th:each="item : ${category.categoryName}">
-                <a th:href="@{/business/view(column=${category.key},value=${category})}" th:text="${category}"></a>
+                <a th:href="@{/business}" th:text="${category}"></a>
+                <!--need to map directly to category types -->
             </li>
         </ul>
     </td>
+    </tr>
 
     <tr>
         <td th:each="item : ${subcategories}">
