@@ -1,4 +1,4 @@
-package org.launchcode.neighborgoods.models;
+package org.launchcode.neighborgoods.enums;
 
 public enum Categories {
 
