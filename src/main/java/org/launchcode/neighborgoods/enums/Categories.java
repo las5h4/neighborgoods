@@ -4,10 +4,10 @@ public enum Categories {
 
     RESTAURANTS("Restaurants"),
     RETAIL ("Retail"),
-    GROCERY("Grocery"),
-    BEAUTY("Beauty"),
-    HOME_SERVICES("Home Services"),
-    AUTO_SERVICES("Auto Services"),
+    //GROCERY("Grocery"),
+    //BEAUTY("Beauty"),
+    //HOME_SERVICES("Home Services"),
+    //AUTO_SERVICES("Auto Services"),
     OTHER("Other");
 
     private String categoryName;

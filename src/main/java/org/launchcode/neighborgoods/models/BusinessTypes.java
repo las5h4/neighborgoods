@@ -14,8 +14,19 @@ public class BusinessTypes {
     private RetailSubCategories retailSubCategories;
     private SubCategories subCategories;
 
-    public BusinessTypes(Categories categories, SubCategories subCategories){
+    public BusinessTypes(Categories categories, AutoServicesSubCategories autoServicesSubCategories,
+                         BeautySubCategories beautySubCategories, GrocerySubCategories grocerySubCategories,
+                         HomeServicesSubCategories homeServicesSubCategories, OtherSubCategories otherSubCategories,
+                         RestaurantSubCategories restaurantSubCategories, RetailSubCategories retailSubCategories,
+                         SubCategories subCategories){
         this.categories = categories;
+        this.autoServicesSubCategories = autoServicesSubCategories;
+        this.beautySubCategories = beautySubCategories;
+        this.grocerySubCategories = grocerySubCategories;
+        this.homeServicesSubCategories = homeServicesSubCategories;
+        this.otherSubCategories = otherSubCategories;
+        this.restaurantSubCategories = restaurantSubCategories;
+        this.retailSubCategories = retailSubCategories;
         this.subCategories = subCategories;
     }
 
