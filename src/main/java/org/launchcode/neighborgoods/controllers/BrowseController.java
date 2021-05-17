@@ -33,12 +33,12 @@ public class BrowseController {
         return "browse";
     }
 
-    @RequestMapping(value="")
-    public String browseByCategorySubType(Model model){
-        //this part will render a different view based on which subcategory the user clicks
-        //this part depends on where data is being pulled from
-
-        return "";
-    }
+//    @RequestMapping(value="")
+//    public String browseByCategorySubType(Model model){
+//        //this part will render a different view based on which subcategory the user clicks
+//        //this part depends on where data is being pulled from
+//
+//        return "";
+//    }
 
 }
