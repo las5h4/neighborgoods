@@ -21,7 +21,7 @@ import java.util.Optional;
 public class AuthenticationController {
 
     @Autowired
-    UserRepository userRepository;
+    private UserRepository userRepository;
     private static final String userSessionKey = "user";
 
     public User getUserFromSession(HttpSession session) {
@@ -41,6 +41,7 @@ public class AuthenticationController {
 
     private static void setUserInSession(HttpSession session, User user) {
         session.setAttribute(userSessionKey, user.getId());
+        session.setAttribute("username", user.getUsername());
     }
 
     @GetMapping("/login")
@@ -85,7 +86,6 @@ public class AuthenticationController {
 
 
 
-
     @GetMapping("/register")
     public String displayRegistrationForm(Model model) {
         model.addAttribute(new RegisterFormDTO());
@@ -118,7 +118,7 @@ public class AuthenticationController {
             return "register";
         }
 
-        User newUser = new User(registerFormDTO.getUsername(), registerFormDTO.getPassword());
+        User newUser = new User(registerFormDTO.getUsername(), registerFormDTO.getEmail(), registerFormDTO.getPassword());
         userRepository.save(newUser);
         setUserInSession(request.getSession(), newUser);
 
@@ -128,6 +128,6 @@ public class AuthenticationController {
     @GetMapping("/logout")
     public String logout(HttpServletRequest request){
         request.getSession().invalidate();
-        return "redirect:/login";
+        return "redirect: index";
     }
 }

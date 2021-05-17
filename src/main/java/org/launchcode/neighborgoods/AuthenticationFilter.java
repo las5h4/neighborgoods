@@ -1,5 +1,6 @@
-package org.launchcode.neighborgoods.models;
+package org.launchcode.neighborgoods;
 
+import org.launchcode.neighborgoods.models.User;
 import org.launchcode.neighborgoods.models.data.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.servlet.HandlerInterceptor;
@@ -19,7 +20,7 @@ public class AuthenticationFilter implements HandlerInterceptor {
     @Autowired
     org.launchcode.neighborgoods.controllers.AuthenticationController authenticationController;
 
-    private static final List<String> whitelist = Arrays.asList("/login", "/register", "/logout", "/css");
+    private static final List<String> whitelist = Arrays.asList("/index", "/login", "/register", "/logout", "/css");
 
     private static boolean isWhitelisted(String path) {
         for (String pathRoot : whitelist) {
