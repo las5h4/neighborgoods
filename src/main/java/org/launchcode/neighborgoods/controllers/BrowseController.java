@@ -38,6 +38,7 @@ public class BrowseController {
         return "browse";
     }
 
+
     @RequestMapping("browse")
     public String browseByCategoryType(Model model, @RequestParam String column, @RequestParam String value){
         Iterable<Business> businesses;
@@ -51,6 +52,7 @@ public class BrowseController {
 
         return "business";
     }
+
 
   /*  @GetMapping
     public String displayAllBusinesses(Model model){
