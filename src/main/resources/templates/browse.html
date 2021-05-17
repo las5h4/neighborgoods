@@ -22,16 +22,11 @@
         </td>
     </tr>
     <tr>
-        <!-- ok here's what i'm thinking: cut down your subcategories to like 2 or 3 and then
-        you'll have to mess w/ object relational mapping i believe, check end chapters of java book-->
-        <!-- then when you click links of each category, it will only list what is related to that category
-        and hopefully eventually you can sort those using a drop down of the subcategories?-->
-        <!-- assignment 4 is a good reference-->
         <td>
             <a th:href="@{/browse/business(column='All',value='View All')}">View All</a>
         </td>
         <td>
-           <!-- <a th:href="browse/business(column=restaurant,value=${restaurant.businessName}">Restaurants</a>-->
+            <a th:href="business">Restaurants</a>
         </td>
         <td>
             <a th:href="business">Retail</a>
@@ -39,6 +34,7 @@
         <td>
             <a th:href="business">Other</a>
         </td>
+
     </tr>
 
 </table>

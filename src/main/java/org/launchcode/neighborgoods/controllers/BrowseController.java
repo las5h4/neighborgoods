@@ -44,7 +44,10 @@ public class BrowseController {
         if(column.toLowerCase().equals("all")){
             businesses = businessRepository.findAll();
             model.addAttribute("title", "All Businesses");
-        }
+        } else {
+            businesses = businessRepository.findAll();
+            model.addAttribute("title", columnChoices.get(column) + ":" + value);
+        } model.addAttribute("businesses", businesses);
 
         return "business";
     }
