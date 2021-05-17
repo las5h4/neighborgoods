@@ -7,7 +7,7 @@
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" href="#">Home</a>
+    <a class="navbar-brand px-3" href="#">Home</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -15,14 +15,14 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-                <a class="nav-link" th:href="@{'/business/'}">Browse</a>
+                <a class="nav-link px-3" th:href="@{'/business/'}">Browse</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Map</a>
+                <a class="nav-link px-3" href="#">Map</a>
             </li>
 
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <a class="nav-link dropdown-toggle px-3" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Accounts
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -34,16 +34,14 @@
                 </div>
             </li>
             <li class="nav-item">
-                <a class="nav-link disabled" href="#">Disabled</a>
+                <a class="nav-link px-3" href="#">Login / Register</a>
             </li>
+            <form class="d-flex px-3">
+                <input class="form-control me-2" type="search" placeholder="Enter Business, Category, etc." aria-label="Search">
+                <button class="btn btn-outline-success px-3" type="submit">Search</button>
+            </form>
         </ul>
-        <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="search" placeholder="Enter Business, Category, etc." aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-        </form>
-        <li class="nav-item">
-            <a class="nav-link" href="#">Login / Register</a>
-        </li>
+
     </div>
 </nav>
 
@@ -101,8 +99,29 @@
         <span class="sr-only">Next</span>
     </a>
 </div>
-
-<h1>Welcome to the Home Page!</h1>
+<div class="card border-dark mb-3" style="max-width: 100rem;">
+    <div class="card-header">Who We Are</div>
+    <div class="card-body text-dark">
+        <h5 class="card-title">NeighborGoods</h5>
+        <p class="card-text">A business recommendation and review site, akin to Yelp, which will focus on promotion and
+            raising visibility of small, minority-, women-, and differently-abled led and owned businesses.
+            The site should help guide community and customer support and interest to small, diverse, independent businesses
+            and organizations run or owned by the listed groups. A service of this type would be helpful for the conscious consumer: the person
+            who is invested in buying or supporting as locally as is possible and building stable financial networks for
+            often disenfranchised or overlooked groups within their communities.</p>
+    </div>
+</div>
+<!--<h1>NeighborGoods</h1>-->
+<!--<br>-->
+<!--<h2>Who We Are</h2>-->
+<!--<p>-->
+<!--    A business recommendation and review site, akin to Yelp, which will focus on promotion and-->
+<!--    raising visibility of small, minority-, women-, and differently-abled led and owned businesses.-->
+<!--    The site should help guide community and customer support and interest to small, diverse, independent businesses-->
+<!--    and organizations run or owned by the listed groups. A service of this type would be helpful for the conscious consumer: the person-->
+<!--    who is invested in buying or supporting as locally as is possible and building stable financial networks for-->
+<!--    often disenfranchised or overlooked groups within their communities.-->
+<!--</p>-->
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
