@@ -23,7 +23,7 @@
     </tr>
     <tr>
         <td>
-            <a th:href="@{/browse/business(column='All',value='View All')}">View All</a>
+            <a th:href="business">View All</a>
         </td>
         <td>
             <a th:href="business">Restaurants</a>
@@ -34,6 +34,10 @@
         <td>
             <a th:href="business">Other</a>
         </td>
+
+       <!-- <li th:each="category : ${categories}">
+            <a th:href="@{/browse/business(column=category,value=${category.categoryName})}" th:text="${category.categoryName}"></a>
+        </li>-->
 
     </tr>
 

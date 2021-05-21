@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8"/>
+    <title></title>
+</head>
+<body>
+<h1 th:text="${'Business: ' + business.businessName}">Default Title</h1>
+
+<!--<nav th:replace="fragments :: page-header"></nav>-->
+
+<div>
+    <p th:text="${'Business: ' + business.businessName}"></p>
+    <p th:text="${'Location: ' + business.streetAddress + ' ' + business.city + ', ' + business.state + ' ' + business.zipCode}"></p>
+    <p th:text="${'Phone number: ' + business.phoneNumber}"></p>
+    <p th:text="${'Website: ' + business.website}"></p>
+    <p th:text="${'Owner Name: ' + business.ownerName}"></p>
+    <p th:text="${'Email: ' + business.email}"></p>
+    <p th:text="${'Owner Type: ' + business.ownerType}"></p>
+    <p th:text="${'Business Category: ' + business.businessCategory}"></p>
+    <p th:text="${'Business Subcategory: ' + business.businessSubCategory}"></p>
+</div>
+
+</body>
+</html>

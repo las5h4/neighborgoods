@@ -9,9 +9,9 @@
 <div class="container body-content">
     <h2>Businesses</h2>
     <ul>
-        <li th:each="business : ${business}">
+        <li th:each="category : ${categories}" class="form">
             <a th:href="@{'/business/view/' + ${business.id}}" th:text="${business.businessName}"></a>
-            <input type="radio" class="star" name="rating" value="1" />&#9734
+            <input type="radio" name="rating" value="1" /><span></span>
         </li>
     </ul>
     <a th:href="@{'/business/add'}">Add Business</a>

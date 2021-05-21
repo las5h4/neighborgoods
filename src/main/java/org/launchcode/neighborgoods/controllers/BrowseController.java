@@ -3,6 +3,7 @@ package org.launchcode.neighborgoods.controllers;
 import org.launchcode.neighborgoods.enums.Categories;
 import org.launchcode.neighborgoods.enums.SubCategories;
 import org.launchcode.neighborgoods.models.Business;
+import org.launchcode.neighborgoods.models.BusinessData;
 import org.launchcode.neighborgoods.models.data.BusinessRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -33,7 +34,6 @@ public class BrowseController {
     @RequestMapping
     public String browse(Model model){
         model.addAttribute("businesses", businessRepository.findAll());
-        model.addAttribute("categories", Categories.values());
 
         return "browse";
     }
@@ -46,9 +46,10 @@ public class BrowseController {
             businesses = businessRepository.findAll();
             model.addAttribute("title", "All Businesses");
         } else {
-            businesses = businessRepository.findAll();
-            model.addAttribute("title", columnChoices.get(column) + ":" + value);
-        } model.addAttribute("businesses", businesses);
+            businesses = BusinessData.findByColumnAndValue(column, value, businessRepository.findAll());
+            model.addAttribute("title", "Businesses with " + columnChoices.get(column) + ": " + value);
+        }
+        model.addAttribute("businesses", businesses);
 
         return "business";
     }
