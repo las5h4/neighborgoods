@@ -8,7 +8,8 @@
 <body>
 
 <div class="container body-content">
-    <h1>Browse Businesses</h1>
+    <h1 th:text="${#strings.capitalizeWords(title)}"></h1>
+    <h2 class = "centered">Browse By Category</h2>
 </div>
 
 <table class="centeredTable">
@@ -23,10 +24,10 @@
     </tr>
     <tr>
         <td>
-            <a th:href="@{/browse/view(column='all',value='View All')}">View All</a>
+            <a th:href="@{/browse/result(column='all',value='View All')}">View All</a>
         </td>
         <td>
-            <a th:href="@{/browse/result(column=business_categories,value='Restaurant}">Restaurants</a>
+            <a th:href="@{/browse/result(column='business_category',value='restaurant')}">Restaurants</a>
         </td>
         <td>
             <a th:href="business">Retail</a>

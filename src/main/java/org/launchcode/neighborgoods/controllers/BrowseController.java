@@ -50,17 +50,18 @@ public class BrowseController {
 
 
     @RequestMapping(value = "business")
-    public String displayBusinessByCategory(Model model, @RequestParam String column, @RequestParam String value) {
+    public String displayBusinessByCategory(Model model, @RequestParam String column, @RequestParam String value,
+                                            @PathVariable Integer id) {
         Iterable<Business> result = businessRepository.findAll();
-        //Allbusinesses = result.get();
-        Business[] AllBusinesses = result.get();
+       // Business business = result.get();
+        Business[] allBusinesses = new Business[0];
 
-        for (Business item : result) {
-            if (column.toLowerCase().equals("Restaurant")) {
-                return "";
-                model.addAttribute("title", columnChoices.get(column) + ": " + value);
+        for (Business item : allBusinesses) {
+            if (column.toLowerCase().equals("all")) {
+                result = businessRepository.findAll();
+                model.addAttribute("title", "View All");
             }
-
+           // model.addAttribute("title", columnChoices.get(column) + ": " + value);
         }
         return "business";
     }
