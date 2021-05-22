@@ -23,10 +23,10 @@
     </tr>
     <tr>
         <td>
-            <a th:href="business">View All</a>
+            <a th:href="@{/browse/view(column='all',value='View All')}">View All</a>
         </td>
         <td>
-            <a th:href="business">Restaurants</a>
+            <a th:href="@{/browse/result(column=business_categories,value='Restaurant}">Restaurants</a>
         </td>
         <td>
             <a th:href="business">Retail</a>

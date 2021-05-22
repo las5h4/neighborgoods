@@ -1,5 +1,6 @@
 package org.launchcode.neighborgoods.controllers;
 
+import jdk.jfr.Category;
 import org.launchcode.neighborgoods.enums.Categories;
 import org.launchcode.neighborgoods.enums.SubCategories;
 import org.launchcode.neighborgoods.models.Business;
@@ -9,10 +10,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.persistence.ManyToMany;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
+import java.util.Optional;
 
 
 @Controller
@@ -22,9 +29,12 @@ public class BrowseController {
     @Autowired
     private BusinessRepository businessRepository;
 
+    //not sure if this is necessary
+  //  private Business business;
+
     static HashMap<String, String> columnChoices = new HashMap<>();
 
-    public BrowseController(){
+    public BrowseController() {
         columnChoices.put("all", "All");
         columnChoices.put("restaurant", "Restaurants");
         columnChoices.put("retail", "Retail");
@@ -32,36 +42,43 @@ public class BrowseController {
     }
 
     @RequestMapping
-    public String browse(Model model){
+    public String browse(Model model) {
         model.addAttribute("businesses", businessRepository.findAll());
 
         return "browse";
     }
 
 
-    @RequestMapping("browse")
-    public String browseByCategoryType(Model model, @RequestParam String column, @RequestParam String value){
-        Iterable<Business> businesses;
-        if(column.toLowerCase().equals("all")){
-            businesses = businessRepository.findAll();
-            model.addAttribute("title", "All Businesses");
-        } else {
-            businesses = BusinessData.findByColumnAndValue(column, value, businessRepository.findAll());
-            model.addAttribute("title", "Businesses with " + columnChoices.get(column) + ": " + value);
-        }
-        model.addAttribute("businesses", businesses);
+    @RequestMapping(value = "business")
+    public String displayBusinessByCategory(Model model, @RequestParam String column, @RequestParam String value) {
+        Iterable<Business> result = businessRepository.findAll();
+        //Allbusinesses = result.get();
+        Business[] AllBusinesses = result.get();
 
+        for (Business item : result) {
+            if (column.toLowerCase().equals("Restaurant")) {
+                return "";
+                model.addAttribute("title", columnChoices.get(column) + ": " + value);
+            }
+
+        }
         return "business";
     }
-
-
-  /*  @GetMapping
-    public String displayAllBusinesses(Model model){
-        model.addAttribute("categories", Categories.values());
-        model.addAttribute("subcategories", SubCategories.values());
-
-        return "browse";
-    }*/
-
-
 }
+
+
+/*if(column.toLowerCase().equals("all")){
+                businesses = businessRepository.findAll();
+                model.addAttribute("title", "All Businesses");
+            } else {
+
+            }
+            return "";
+        }*/
+
+// Categories<business> result = businessRepository.findAll();
+
+//businesses = BusinessData.findByColumnAndValue(column, value, businessRepository.findAll());
+//businessRepository.findbycolumnandvalue
+//model.addAttribute("title", "Businesses with " + columnChoices.get(column) + ": " + value);
+//}
