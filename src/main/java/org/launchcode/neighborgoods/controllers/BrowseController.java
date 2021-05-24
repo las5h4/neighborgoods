@@ -1,24 +1,14 @@
 package org.launchcode.neighborgoods.controllers;
 
-import jdk.jfr.Category;
-import org.launchcode.neighborgoods.enums.Categories;
-import org.launchcode.neighborgoods.enums.SubCategories;
 import org.launchcode.neighborgoods.models.Business;
-import org.launchcode.neighborgoods.models.BusinessData;
 import org.launchcode.neighborgoods.models.data.BusinessRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import javax.persistence.ManyToMany;
-import java.lang.reflect.Array;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Optional;
 
 
@@ -50,32 +40,41 @@ public class BrowseController {
 
 
     @RequestMapping(value = "business")
-    public String displayBusinessByCategory(Model model, @RequestParam String column, @RequestParam String value,
-                                            @PathVariable Integer id) {
-        Iterable<Business> result = businessRepository.findAll();
+    public String displayBusinessByCategory(Model model, @RequestParam String column,
+                                            @RequestParam String value, Iterable<Integer> id) {
+        Optional<Business> result = businessRepository.get();
        // Business business = result.get();
         Business[] allBusinesses = new Business[0];
 
         for (Business item : allBusinesses) {
             if (column.toLowerCase().equals("all")) {
-                result = businessRepository.findAll();
+                result = businessRepository.get();
                 model.addAttribute("title", "View All");
+            } else if (column.toLowerCase().equals("Restaurant")) {
+                result = businessRepository.get();
+                model.addAttribute("title", columnChoices.get(column) + ": " + value);
+            } else if (column.toLowerCase().equals("Retail")) {
+                result = businessRepository.get();
+                model.addAttribute("title", columnChoices.get(column) + ": " + value);
+
+
             }
-           // model.addAttribute("title", columnChoices.get(column) + ": " + value);
-        }
-        return "business";
+        return "browse";
     }
+
+   /* @GetMapping("view")
+    public String displayCategories(Model model, @PathVariable int id) {
+
+        Optional optCategory = businessRepository.findById(id);
+        if (optCategory.isPresent()) {
+            Business business = (Business) optCategory.get();
+            model.addAttribute("businesses", business);
+            return "business/view";
+        } else {
+            return "redirect:../";
+        }
+    }*/
 }
-
-
-/*if(column.toLowerCase().equals("all")){
-                businesses = businessRepository.findAll();
-                model.addAttribute("title", "All Businesses");
-            } else {
-
-            }
-            return "";
-        }*/
 
 // Categories<business> result = businessRepository.findAll();
 
