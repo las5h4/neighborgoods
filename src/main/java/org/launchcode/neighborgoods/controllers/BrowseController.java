@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.HashMap;
-import java.util.Optional;
 
 
 @Controller
@@ -42,23 +41,20 @@ public class BrowseController {
     @RequestMapping(value = "business")
     public String displayBusinessByCategory(Model model, @RequestParam String column,
                                             @RequestParam String value, Iterable<Integer> id) {
-        Optional<Business> result = businessRepository.get();
+        Iterable<Business> result = businessRepository.findAll();
        // Business business = result.get();
         Business[] allBusinesses = new Business[0];
 
         for (Business item : allBusinesses) {
             if (column.toLowerCase().equals("all")) {
-                result = businessRepository.get();
+                result = businessRepository.findAll();
                 model.addAttribute("title", "View All");
             } else if (column.toLowerCase().equals("Restaurant")) {
-                result = businessRepository.get();
+                result = businessRepository.findAllById(id);
                 model.addAttribute("title", columnChoices.get(column) + ": " + value);
-            } else if (column.toLowerCase().equals("Retail")) {
-                result = businessRepository.get();
-                model.addAttribute("title", columnChoices.get(column) + ": " + value);
-
-
             }
+
+        }
         return "browse";
     }
 
