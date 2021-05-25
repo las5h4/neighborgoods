@@ -20,9 +20,6 @@ public class BrowseController {
     @Autowired
     private BusinessRepository businessRepository;
 
-    //not sure if this is necessary
-  //  private Business business;
-
     static HashMap<String, String> columnChoices = new HashMap<>();
 
     public BrowseController() {
@@ -43,36 +40,17 @@ public class BrowseController {
     @GetMapping("browse/{category}")
     public String displayBusinessByCategory(Model model, @PathVariable String category) {
         Iterable<Business> result = businessRepository.findAll();
-        List<Business> businesses = new ArrayList<Business>();
+        ArrayList businesses = new ArrayList();
+        //List<Business> businesses = new ArrayList<>();
 
         for (Business business : result) {
-            if (business.getBusinessCategory().toLowerCase().equals(category)) {
+            if(business.getBusinessCategory().toLowerCase().equals(category)){
                 businesses.add(business);
-                //businesses.add(business);
-                //businesses.push(business);
             }
+
         }
         model.addAttribute("businesses", businesses);
         return "browse";
     }
 
-   /* @GetMapping("view")
-    public String displayCategories(Model model, @PathVariable int id) {
-
-        Optional optCategory = businessRepository.findById(id);
-        if (optCategory.isPresent()) {
-            Business business = (Business) optCategory.get();
-            model.addAttribute("businesses", business);
-            return "business/view";
-        } else {
-            return "redirect:../";
-        }
-    }*/
 }
-
-// Categories<business> result = businessRepository.findAll();
-
-//businesses = BusinessData.findByColumnAndValue(column, value, businessRepository.findAll());
-//businessRepository.findbycolumnandvalue
-//model.addAttribute("title", "Businesses with " + columnChoices.get(column) + ": " + value);
-//}

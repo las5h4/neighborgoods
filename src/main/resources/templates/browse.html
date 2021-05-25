@@ -14,11 +14,11 @@
 
 <div class="form-group">
     <label> Select Sub-Category
-        <select>
-           <option th:each="item : ${subcategories}"
-                    th:value="${categories}"
-                    th:text="${categories.categoryName}"
-           ></option>
+        <select th:field="${businessTypes.subCategory}">
+            <option th:each="subcategory : ${subCategories}"
+                    th:value="${subcategory}"
+                    th:text="${subcategory.subCategoryName}"
+            ></option>
         </select>
     </label>
 </div>
