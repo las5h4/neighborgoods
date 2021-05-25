@@ -12,6 +12,19 @@
     <h2 class = "centered">Browse By Category</h2>
 </div>
 
+<div class="form-group">
+    <label> Select Sub-Category
+        <select>
+           <option th:each="item : ${subcategories}"
+                    th:value="${categories}"
+                    th:text="${categories.categoryName}"
+           ></option>
+        </select>
+    </label>
+</div>
+
+
+
 <table class="centeredTable">
     <tr>
         <td>
@@ -19,18 +32,17 @@
         </td>
         <td th:each="category : ${categories}">
             <a th:href="@{/business}" th:text="${category.categoryName}"></a>
-                <!--need to map directly to category types -->
         </td>
     </tr>
     <tr>
         <td>
-            <a th:href="@{/browse/business(column='all',value='View All')}">View All</a>
+            <a th:href="@{business}">View All</a>
         </td>
         <td>
-            <a th:href="@{/browse/business(column='business_category',value='restaurant')}">Restaurants</a>
+            <a th:href="@{/browse/restaurant}">Restaurants</a>
         </td>
         <td>
-            <a th:href="@{/business}">Retail</a>
+            <a th:href="@{/browse/retail}">Retail</a>
         </td>
         <td>
             <a th:href="business">Other</a>
@@ -43,6 +55,7 @@
     </tr>
 
 </table>
+
 
 </body>
 </html>

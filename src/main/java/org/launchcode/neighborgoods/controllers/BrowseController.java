@@ -3,13 +3,16 @@ package org.launchcode.neighborgoods.controllers;
 import org.launchcode.neighborgoods.models.Business;
 import org.launchcode.neighborgoods.models.data.BusinessRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.ArrayList;
 import java.util.HashMap;
-
+import java.util.List;
 
 @Controller
 @RequestMapping("browse")
@@ -38,23 +41,19 @@ public class BrowseController {
     }
 
 
-    @RequestMapping(value = "business")
-    public String displayBusinessByCategory(Model model, @RequestParam String column,
-                                            @RequestParam String value, Iterable<Integer> id) {
+    @GetMapping("browse/{category}")
+    public String displayBusinessByCategory(Model model, @PathVariable String category) {
         Iterable<Business> result = businessRepository.findAll();
-       // Business business = result.get();
-        Business[] allBusinesses = new Business[0];
+        //arraylist? list?
+        List businesses = new ArrayList<>();
 
-        for (Business item : allBusinesses) {
-            if (column.toLowerCase().equals("all")) {
-                result = businessRepository.findAll();
-                model.addAttribute("title", "View All");
-            } else if (column.toLowerCase().equals("Restaurant")) {
-                result = businessRepository.findAllById(id);
-                model.addAttribute("title", columnChoices.get(column) + ": " + value);
+        for (Business business : result) {
+            if (business.getBusinessCategory().toLowerCase().equals(category)) {
+                businesses.add(business);
+                //businesses.push(business);
             }
-
         }
+        model.addAttribute("businesses", businesses);
         return "browse";
     }
 
