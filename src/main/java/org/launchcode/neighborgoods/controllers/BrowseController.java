@@ -3,7 +3,6 @@ package org.launchcode.neighborgoods.controllers;
 import org.launchcode.neighborgoods.models.Business;
 import org.launchcode.neighborgoods.models.data.BusinessRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -44,12 +43,12 @@ public class BrowseController {
     @GetMapping("browse/{category}")
     public String displayBusinessByCategory(Model model, @PathVariable String category) {
         Iterable<Business> result = businessRepository.findAll();
-        //arraylist? list?
-        List businesses = new ArrayList<>();
+        List<Business> businesses = new ArrayList<Business>();
 
         for (Business business : result) {
             if (business.getBusinessCategory().toLowerCase().equals(category)) {
                 businesses.add(business);
+                //businesses.add(business);
                 //businesses.push(business);
             }
         }
