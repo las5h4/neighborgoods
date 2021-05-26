@@ -22,7 +22,7 @@ public class Business {
 
     private String state;
 
-    private int zipCode;
+    private String zipCode;
 
     private String phoneNumber;
 
@@ -32,15 +32,15 @@ public class Business {
 
     private String email;
 
-    private String ownerType;
+    private String businessTag;
 
     private String businessCategory;
 
     private String businessSubCategory;
 
     public Business () {};
-    public Business (String businessName, String streetAddress, String city, String state, int zipCode,
-                     String phoneNumber, String website, String ownerName, String email, String ownerType,
+    public Business (String businessName, String streetAddress, String city, String state, String zipCode,
+                     String phoneNumber, String website, String ownerName, String email, String businessTag,
                      String businessCategory, String businessSubCategory){
         this.businessName = businessName;
         this.streetAddress = streetAddress;
@@ -51,7 +51,7 @@ public class Business {
         this.website = website;
         this.ownerName = ownerName;
         this.email = email;
-        this.ownerType = ownerType;
+        this.businessTag = businessTag;
         this.businessCategory = businessCategory;
         this.businessSubCategory = businessSubCategory;
     }
@@ -96,11 +96,11 @@ public class Business {
         this.state = state;
     }
 
-    public int getZipCode() {
+    public String getZipCode() {
         return zipCode;
     }
 
-    public void setZipCode(int zipCode) {
+    public void setZipCode(String zipCode) {
         this.zipCode = zipCode;
     }
 
@@ -136,12 +136,12 @@ public class Business {
         this.email = email;
     }
 
-    public String getOwnerType() {
-        return ownerType;
+    public String getBusinessTag() {
+        return businessTag;
     }
 
-    public void setOwnerType(String ownerType) {
-        this.ownerType = ownerType;
+    public void setOwnerType(String businessTag) {
+        this.businessTag = businessTag;
     }
 
     public String getBusinessCategory() {
