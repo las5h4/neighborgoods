@@ -78,6 +78,17 @@
         <span th:errors="${business.businessSubCategory}" class="error"></span>
     </div>
 
+    <div class="form-group">
+        <label th:for="onlineShopping">Does this business have online shopping available? </label>
+        <div class="custom-control custom-radio custom-control-inline">
+            <input type="radio" id="yes" name="yes" class="custom-control-input" value="1">
+            <label class="custom-control-label" for="yes">yes</label>
+        </div>
+        <div class="custom-control custom-radio custom-control-inline">
+            <input type="radio" id="no" name="no" class="custom-control-input" value="0">
+            <label class="custom-control-label" for="no">no</label>
+        </div>
+
     <input type="submit" value="Add Business" />
 </form>
 </body>
