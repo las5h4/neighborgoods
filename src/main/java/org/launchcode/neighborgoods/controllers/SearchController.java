@@ -14,28 +14,20 @@ import java.util.List;
 import java.util.Optional;
 
 @Controller
-
 public class SearchController {
 
     @Autowired
     private BusinessRepository businessRepository;
 
-
-    @GetMapping("search")
-
-    public String search (Model model){
-        return "search";
-    }
-
-    @GetMapping("search")
-    public String displaySearchResults(Model model, @RequestParam String searchTerm){
-        Iterable <Business> allBusinesses = businessRepository.findAll();
-
-        ArrayList<Business> matchingBusinesses = BusinessData.findByValue(searchTerm, allBusinesses);
-
-        model.addAttribute("businesses", matchingBusinesses);
-
-        return "business/index";
-
+    @RequestMapping("search")
+    public String displaySearchResults(Model model, @RequestParam(required = false) String searchTerm){
+        if (searchTerm != null) {
+            Iterable <Business> allBusinesses = businessRepository.findAll();
+            ArrayList<Business> matchingBusinesses = BusinessData.findByValue(searchTerm, allBusinesses);
+            model.addAttribute("businesses", matchingBusinesses);
+            return "business/index";
+        } else {
+            return "search";
+        }
     }
 }
