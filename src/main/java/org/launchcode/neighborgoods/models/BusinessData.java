@@ -5,8 +5,8 @@ import java.util.Locale;
 
 public class BusinessData {
 
-    public static ArrayList<Business> findByValue(String value, Iterable<Business> allBusinesses){
-        String lower_val = value.toLowerCase();
+    public static ArrayList<Business> findByValue(String searchTerm, Iterable<Business> allBusinesses){
+        String lower_val = searchTerm.toLowerCase();
 
         ArrayList<Business> results = new ArrayList<>();
 

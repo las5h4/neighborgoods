@@ -24,7 +24,7 @@ public class SearchController {
         if (searchTerm != null) {
             Iterable <Business> allBusinesses = businessRepository.findAll();
             ArrayList<Business> matchingBusinesses = BusinessData.findByValue(searchTerm, allBusinesses);
-            model.addAttribute("businesses", matchingBusinesses);
+            model.addAttribute("business", matchingBusinesses);
             return "business/index";
         } else {
             return "search";
