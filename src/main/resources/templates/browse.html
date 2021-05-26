@@ -12,19 +12,6 @@
     <h2 class = "centered">Browse By Category</h2>
 </div>
 
-<div class="form-group">
-    <label> Select Sub-Category
-        <select th:field="${businessTypes.subCategory}">
-            <option th:each="subcategory : ${subCategories}"
-                    th:value="${subcategory}"
-                    th:text="${subcategory.subCategoryName}"
-            ></option>
-        </select>
-    </label>
-</div>
-
-
-
 <table class="centeredTable">
     <tr>
         <td>

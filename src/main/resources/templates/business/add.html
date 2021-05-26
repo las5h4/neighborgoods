@@ -68,6 +68,7 @@
                     th:text="${owner.tagName}"
             ></option>
         </select>
+        <span th:errors="${business.ownerType}" class="error"></span>
     </div>
 
     <div class="form-group">
@@ -78,6 +79,7 @@
                     th:text="${category.categoryName}"
             ></option>
         </select>
+        <span th:errors="${business.businessCategory}" class="error"></span>
     </div>
 
     <div class="form-group">
@@ -88,6 +90,7 @@
                     th:text="${subcategory.subCategoryName}"
             ></option>
         </select>
+        <span th:errors="${business.businessSubCategory}" class="error"></span>
     </div>
 
     <input type="submit" value="Add Business" />

@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -20,14 +21,6 @@ public class BrowseController {
     @Autowired
     private BusinessRepository businessRepository;
 
-    static HashMap<String, String> columnChoices = new HashMap<>();
-
-    public BrowseController() {
-        columnChoices.put("all", "All");
-        columnChoices.put("restaurant", "Restaurants");
-        columnChoices.put("retail", "Retail");
-        columnChoices.put("other", "Other");
-    }
 
     @RequestMapping
     public String browse(Model model) {
@@ -36,12 +29,16 @@ public class BrowseController {
         return "browse";
     }
 
+    /*@GetMapping("{name}")
+    @ResponseBody
+    public String browseByName(@PathVariable String name){
+        return "Hello" + name + "!";
+    }*/
 
-    @GetMapping("browse/{category}")
+    @GetMapping("{category}")
     public String displayBusinessByCategory(Model model, @PathVariable String category) {
         Iterable<Business> result = businessRepository.findAll();
-        ArrayList businesses = new ArrayList();
-        //List<Business> businesses = new ArrayList<>();
+        ArrayList<Business> businesses = new ArrayList();
 
         for (Business business : result) {
             if(business.getBusinessCategory().toLowerCase().equals(category)){
