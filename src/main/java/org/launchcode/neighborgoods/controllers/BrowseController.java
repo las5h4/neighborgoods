@@ -36,12 +36,14 @@ public class BrowseController {
         ArrayList<Business> businesses = new ArrayList();
 
         /*for (Business business : result) {
-            if(business.getBusinessCategory().toLowerCase().equals(category)){
-                businesses.add(business);
+            if (business.getBusinessCategory().toLowerCase().equals(category)){
+                //System.out.println(business);
+
+                //businesses.add(business);
             }
 
         }*/
-        model.addAttribute("businesses", businesses);
+        model.addAttribute("businesses", result);
         return "browse-list";
     }
 

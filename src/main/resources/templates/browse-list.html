@@ -9,32 +9,26 @@
 
 <div class="container body-content">
 
-    <p>This is a landing page</p>
-
-
-    <!--<table class="job-listing">
-        <tr th:each="job : ${jobs}">
+    <p>test</p>
+    <table>
+        <tr th:each="business : ${businesses}">
             <td>
                 <p>
-                    Job Id:
-                    <a th:href="@{'/view/' + ${job.id}}" th:text="${job.id}"></a>
+                    Business:
+                    <a th:href="@{'/view/' + ${business.id}}" th:text="${business.id}"></a>
                 </p>
-                <p th:text="${'Name: ' + job.name}"></p>
-                <p>
-                    Employer:
-                    <a th:href="@{'/employers/view/' + ${job.employer.id}}" th:text="${job.employer.name}"></a>
-                </p>
-                <p>
-                    Skills:
-                <ul th:each="skill : ${job.skills}">
-                    <li>
-                        <a th:href="@{'/skills/view/' + ${skill.id}}" th:text="${skill.name}"></a>
-                    </li>
-                </ul>
-                </p>
+                <p th:text="${'Business: ' + business.businessName}"></p>
+                <p th:text="${'Location: ' + business.streetAddress + ' ' + business.city + ', ' + business.state + ' ' + business.zipCode}"></p>
+                <p th:text="${'Phone number: ' + business.phoneNumber}"></p>
+                <p th:text="${'Website: ' + business.website}"></p>
+                <p th:text="${'Owner Name: ' + business.ownerName}"></p>
+                <p th:text="${'Email: ' + business.email}"></p>
+                <p th:text="${'Owner Type: ' + business.ownerType}"></p>
+                <p th:text="${'Business Category: ' + business.businessCategory}"></p>
+                <p th:text="${'Business Subcategory: ' + business.businessSubCategory}"></p>
             </td>
         </tr>
-    </table>-->
+    </table>
 
 </div>
 
