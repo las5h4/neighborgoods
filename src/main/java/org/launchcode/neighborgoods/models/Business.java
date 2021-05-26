@@ -38,10 +38,12 @@ public class Business {
 
     private String businessSubCategory;
 
+    private boolean onlineShopping;
+
     public Business () {};
     public Business (String businessName, String streetAddress, String city, String state, String zipCode,
                      String phoneNumber, String website, String ownerName, String email, String businessTag,
-                     String businessCategory, String businessSubCategory){
+                     String businessCategory, String businessSubCategory, boolean onlineShopping){
         this.businessName = businessName;
         this.streetAddress = streetAddress;
         this.city = city;
@@ -54,6 +56,7 @@ public class Business {
         this.businessTag = businessTag;
         this.businessCategory = businessCategory;
         this.businessSubCategory = businessSubCategory;
+        this.onlineShopping = onlineShopping;
     }
 
     public int getId() {
@@ -159,6 +162,11 @@ public class Business {
     public void setBusinessSubCategory(String businessSubCategory) {
         this.businessSubCategory = businessSubCategory;
     }
+
+    public boolean getOnlineShopping() { return onlineShopping; }
+
+    public void setOnlineShopping(boolean onlineShopping) { this.onlineShopping = onlineShopping; }
+
 
     @Override
     public boolean equals(Object o) {
