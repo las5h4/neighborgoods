@@ -29,25 +29,20 @@ public class BrowseController {
         return "browse";
     }
 
-    /*@GetMapping("{name}")
-    @ResponseBody
-    public String browseByName(@PathVariable String name){
-        return "Hello" + name + "!";
-    }*/
 
     @GetMapping("{category}")
     public String displayBusinessByCategory(Model model, @PathVariable String category) {
         Iterable<Business> result = businessRepository.findAll();
         ArrayList<Business> businesses = new ArrayList();
 
-        for (Business business : result) {
+        /*for (Business business : result) {
             if(business.getBusinessCategory().toLowerCase().equals(category)){
                 businesses.add(business);
             }
 
-        }
+        }*/
         model.addAttribute("businesses", businesses);
-        return "browse";
+        return "browse-list";
     }
 
 }
