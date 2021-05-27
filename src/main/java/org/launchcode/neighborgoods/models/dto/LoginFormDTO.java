@@ -1,25 +1,42 @@
 package org.launchcode.neighborgoods.models.dto;
 
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
+import javax.validation.constraints.*;
 
 public class LoginFormDTO {
 
     @NotNull
     @NotBlank
-    @Size(min = 3, max = 20, message = "Invalid username. Must be between 3 and 20 characters.")
+    @Size(min = 3, max = 30, message = "Invalid username. Must be between 3 and 30 characters.")
     private String username;
+
+
+    @Size(min = 3, max = 30)
+    private String address;
+
+    @Min(3)
+    @Max(7)
+    private int zipcode;
 
     @NotNull
     @NotBlank
-    @Size(min = 3, max = 30, message = "Invalid email address.")
+    @Size(min = 3, max = 75, message = "Please enter valid email address.")
     private String email;
 
     @NotNull
     @NotBlank
     @Size(min = 5, max = 30, message = "Invalid password. Must be between 5 and 30 characters.")
     private String password;
+
+    public LoginFormDTO() {
+    }
+
+    public String getAddress() { return address; }
+
+    public void setAddress(String address) { this.address = address; }
+
+    public int getZipcode() { return zipcode; }
+
+    public void setZipcode(int zipcode) { this.zipcode = zipcode; }
 
     public String getUsername() {
         return username;
@@ -33,6 +50,10 @@ public class LoginFormDTO {
 
     public void setEmail(String email) { this.email = email; }
 
+    private void verifyEmail(String email) { this.email = email; }
+
+    public String getVerifyEmail() { return email; }
+
     public String getPassword() {
         return password;
     }
@@ -41,15 +62,8 @@ public class LoginFormDTO {
         this.password = password;
     }
 
-    private String verifyPassword;
+    private void verifyPassword(String password) { this.password = password; }
 
-    public String getVerifyPassword() {
-        return password;
-    }
-
-    public String getValidPassword() {
-        return password;
-    }
-
+    public String getVerifyPassword() { return password; }
 }
 

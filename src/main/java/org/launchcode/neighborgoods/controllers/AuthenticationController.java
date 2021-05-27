@@ -41,6 +41,9 @@ public class AuthenticationController {
 
     private static void setUserInSession(HttpSession session, User user) {
         session.setAttribute(userSessionKey, user.getId());
+        session.setAttribute("email", user.getEmail());
+        session.setAttribute("address", user.getAddress());
+        session.setAttribute("zipcode", user.getZipcode());
         session.setAttribute("username", user.getUsername());
     }
 
@@ -77,7 +80,15 @@ public class AuthenticationController {
             return "login";
         }
 
-        User newUser = new User(loginFormDTO.getUsername(), loginFormDTO.getPassword());
+        String email = loginFormDTO.getEmail();
+        String verifyEmail= loginFormDTO.getVerifyEmail();
+        if (!email.equals(verifyEmail)) {
+            errors.rejectValue("email", "email.mismatch", "Email address does not match");
+            model.addAttribute("title", "Login");
+            return "login";
+        }
+
+        User newUser = new User(loginFormDTO.getUsername(), loginFormDTO.getEmail(), loginFormDTO.getPassword());
         userRepository.save(newUser);
         setUserInSession(request.getSession(), newUser);
 
@@ -105,7 +116,7 @@ public class AuthenticationController {
         User existingUser = userRepository.findByUsername(registerFormDTO.getUsername());
 
         if (existingUser != null) {
-            errors.rejectValue("username", "username.alreadyExists", "A user with that username already exists");
+            errors.rejectValue("username", "username.alreadyExists", "A user with that name already exists");
             model.addAttribute("title", "Register");
             return "register";
         }
@@ -118,16 +129,15 @@ public class AuthenticationController {
             return "register";
         }
 
-        User newUser = new User(registerFormDTO.getUsername(), registerFormDTO.getEmail(), registerFormDTO.getPassword());
+        User newUser = new User(registerFormDTO.getUsername(), registerFormDTO.getEmail(), registerFormDTO.getAddress(), registerFormDTO.getZipcode(), registerFormDTO.getPassword());
         userRepository.save(newUser);
         setUserInSession(request.getSession(), newUser);
 
         return "redirect:";
     }
-
-    @GetMapping("/logout")
+    @GetMapping(value = "/logoutconfirm")
     public String logout(HttpServletRequest request){
         request.getSession().invalidate();
-        return "redirect: index";
+        return "logoutconfirm";
     }
 }

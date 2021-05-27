@@ -18,6 +18,29 @@
         <p class="error" th:errors="${registerFormDTO.username}"></p>
     </div>
     <div class="form-group">
+        <label>Email
+            <input class="form-control" th:field="${registerFormDTO.email}" type="email" />
+        </label>
+        <p class="error" th:errors="${registerFormDTO.email}"></p>
+    </div>
+    <div class="form-group">
+        <label>Verify Email
+            <input class="form-control" th:field="${registerFormDTO.verifyEmail}" type="email" />
+        </label>
+    </div>
+    <div class="form-group">
+        <label>Address (optional)
+            <input class="form-control" th:field="${registerFormDTO.address}" type="address" />
+        </label>
+        <p class="error" th:errors="${registerFormDTO.address}"></p>
+    </div>
+    <div class="form-group">
+        <label>Zip Code (optional)
+            <input class="form-control" th:field="${registerFormDTO.zipcode}" type="zipcode" />
+        </label>
+        <p class="error" th:errors="${registerFormDTO.zipcode}"></p>
+    </div>
+    <div class="form-group">
         <label>Password
             <input class="form-control" th:field="${registerFormDTO.password}" type="password" />
         </label>
