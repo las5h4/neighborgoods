@@ -44,12 +44,6 @@ public class BrowseController {
     public String displayBusinessByCategory(Model model, @PathVariable String category) {
         Iterable<Business> result = businessRepository.findAll();
         ArrayList<Business> businesses = new ArrayList();
-       // String[] businesses = new String[9];
-
-
-       // for(i=0; i<businesses.length; i++){}
-        //maybe set value then get?
-        // Business businesses = new
 
        /* if(result.equals("restaurant")){
             ArrayList<Business> restaurants = new ArrayList();
@@ -57,11 +51,12 @@ public class BrowseController {
         }*/
 
         for (Business business : result) {
-            Object allBusinesses = business.getBusinessCategory();
+            //Object allBusinesses = business.getBusinessCategory();
             //gorl idek
             //String business1 = business.getBusinessCategory();
             //String allBusinesses = business.getBusinessCategory().toLowerCase();
-            if (allBusinesses.equals(category)) {
+            if (business.equals(category)) {
+
                 //model.addAttribute("restaurants", result);
                 //if (business.getBusinessCategory().equals(category)){
                 //put business into businesses array and display
@@ -69,7 +64,7 @@ public class BrowseController {
             //    model.addAttribute("category");
                 //businesses.add(new String(business.getBusinessName()));
                 //}
-                model.addAttribute("");
+                businesses.add(business);
             }
 
 
