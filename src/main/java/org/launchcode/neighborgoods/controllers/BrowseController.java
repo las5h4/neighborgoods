@@ -52,18 +52,19 @@ public class BrowseController {
         for (Business business : businesses) {
             String businessCategory = business.getBusinessCategory();
             System.out.println(businessCategory);
-            System.out.println(businessCategory.getClass().getSimpleName());
-            String lowercaseBusinessCategory = businessCategory.toLowerCase();
+
+            String lowercaseBusinessCategory = businessCategory;
             System.out.println(lowercaseBusinessCategory);
-            System.out.println(lowercaseBusinessCategory.getClass().getSimpleName());
+
             if (lowercaseBusinessCategory == category) {
 
                 businessesByCategory.add(business);
 
             } else {
-                model.addAttribute("null", null);
+                model.addAttribute("null", "Null");
             }
-
+//why is this not displaying? figure out what to do with null
+            //maybe try/catch, maybe else statement, idk either way it's trying to return null so that's blocking it
         }
         model.addAttribute("businesses", businessesByCategory);
         return "browse-list";
