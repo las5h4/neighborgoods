@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import java.lang.reflect.Constructor;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Locale;
+import java.util.Optional;
 
 @Controller
 @RequestMapping("browse")
@@ -42,37 +44,38 @@ public class BrowseController {
 
     @GetMapping("{category}")
     public String displayBusinessByCategory(Model model, @PathVariable String category) {
-        Iterable<Business> result = businessRepository.findAll();
-        ArrayList<Business> businesses = new ArrayList();
+        ArrayList<Business> businesses = new ArrayList<>();
 
-       /* if(result.equals("restaurant")){
-            ArrayList<Business> restaurants = new ArrayList();
-            restaurants.add(result.category);
-        }*/
+        businessRepository.findAll().forEach(businesses::add);
+        ArrayList<Business> businessesByCategory = new ArrayList<>();
 
-        for (Business business : result) {
-            //Object allBusinesses = business.getBusinessCategory();
-            //gorl idek
-            //String business1 = business.getBusinessCategory();
-            //String allBusinesses = business.getBusinessCategory().toLowerCase();
-            if (business.equals(category)) {
+        for (Business business : businesses) {
+            String businessCategory = business.getBusinessCategory();
+            System.out.println(businessCategory);
+            System.out.println(businessCategory.getClass().getSimpleName());
+            String lowercaseBusinessCategory = businessCategory.toLowerCase();
+            System.out.println(lowercaseBusinessCategory);
+            System.out.println(lowercaseBusinessCategory.getClass().getSimpleName());
+            if (lowercaseBusinessCategory == category) {
 
-                //model.addAttribute("restaurants", result);
-                //if (business.getBusinessCategory().equals(category)){
-                //put business into businesses array and display
-                //System.out.println(business);
-            //    model.addAttribute("category");
-                //businesses.add(new String(business.getBusinessName()));
-                //}
-                businesses.add(business);
+                businessesByCategory.add(business);
+
+            } else {
+                model.addAttribute("null", null);
             }
 
-
-
         }
-        model.addAttribute("businesses", result);
+        model.addAttribute("businesses", businessesByCategory);
         return "browse-list";
 
     }
+
+    //model.addAttribute("restaurants", result);
+    //if (business.getBusinessCategory().equals(category)){
+    //System.out.println(business);
+                /* if(result.equals("restaurant")){
+            ArrayList<Business> restaurants = new ArrayList();
+            restaurants.add(result.category);
+        }*/
 
 }
