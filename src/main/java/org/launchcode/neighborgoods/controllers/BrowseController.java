@@ -1,8 +1,6 @@
 package org.launchcode.neighborgoods.controllers;
 
 import org.launchcode.neighborgoods.models.Business;
-import org.launchcode.neighborgoods.models.BusinessCategories;
-import org.launchcode.neighborgoods.models.BusinessData;
 import org.launchcode.neighborgoods.models.data.BusinessRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,11 +9,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import java.lang.reflect.Constructor;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Locale;
-import java.util.Optional;
 
 @Controller
 @RequestMapping("browse")
@@ -26,7 +21,7 @@ public class BrowseController {
 
     static HashMap<String, String> columnChoices = new HashMap<>();
 
-    public BrowseController(){
+    public BrowseController() {
         columnChoices.put("all", "All");
         columnChoices.put("restaurant", "Restaurants");
         columnChoices.put("retail", "Retail");
@@ -37,7 +32,7 @@ public class BrowseController {
     public String browse(Model model) {
         model.addAttribute("businesses", businessRepository.findAll());
         model.addAttribute("categories");
-//add hashmap? somehow getbusinessCategories?
+
         return "browse";
     }
 
@@ -48,35 +43,36 @@ public class BrowseController {
 
         businessRepository.findAll().forEach(businesses::add);
         ArrayList<Business> businessesByCategory = new ArrayList<>();
+        ArrayList<Business> extraArray = new ArrayList<>();
 
         for (Business business : businesses) {
             String businessCategory = business.getBusinessCategory();
             System.out.println(businessCategory);
 
-            String lowercaseBusinessCategory = businessCategory;
-            System.out.println(lowercaseBusinessCategory);
+            //String lowercaseBusinessCategory = businessCategory;
+            //System.out.println(lowercaseBusinessCategory);
 
-            if (lowercaseBusinessCategory == category) {
+            if (businessCategory == category) {
 
-                businessesByCategory.add(business);
+                businessesByCategory.add(1, business);
+                //businessesByCategory.add(business);
 
             } else {
-                model.addAttribute("null", "Null");
-            }
+                extraArray.add(business);
+                //}
 //why is this not displaying? figure out what to do with null
-            //maybe try/catch, maybe else statement, idk either way it's trying to return null so that's blocking it
-        }
-        model.addAttribute("businesses", businessesByCategory);
+                //maybe try/catch, maybe else statement, idk either way it's trying to return null so that's blocking it
+            }
+
+        }model.addAttribute("businesses", businessesByCategory);
         return "browse-list";
 
-    }
 
-    //model.addAttribute("restaurants", result);
-    //if (business.getBusinessCategory().equals(category)){
-    //System.out.println(business);
+        //model.addAttribute("restaurants", result);
+        //if (business.getBusinessCategory().equals(category)){
+        //System.out.println(business);
                 /* if(result.equals("restaurant")){
             ArrayList<Business> restaurants = new ArrayList();
-            restaurants.add(result.category);
-        }*/
-
+            restaurants.add(result.category);*/
+    }
 }
