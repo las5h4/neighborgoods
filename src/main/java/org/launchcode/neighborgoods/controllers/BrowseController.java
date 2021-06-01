@@ -19,15 +19,6 @@ public class BrowseController {
     @Autowired
     private BusinessRepository businessRepository;
 
-    static HashMap<String, String> columnChoices = new HashMap<>();
-
-    public BrowseController() {
-        columnChoices.put("all", "All");
-        columnChoices.put("restaurant", "Restaurants");
-        columnChoices.put("retail", "Retail");
-        columnChoices.put("other", "Other");
-    }
-
     @RequestMapping
     public String browse(Model model) {
         model.addAttribute("businesses", businessRepository.findAll());
@@ -36,33 +27,23 @@ public class BrowseController {
         return "browse";
     }
 
-
     @GetMapping("{category}")
     public String displayBusinessByCategory(Model model, @PathVariable String category) {
         ArrayList<Business> businesses = new ArrayList<>();
-
         businessRepository.findAll().forEach(businesses::add);
         ArrayList<Business> businessesByCategory = new ArrayList<>();
-        ArrayList<Business> extraArray = new ArrayList<>();
-
+        ArrayList<Business> noCategory = new ArrayList<>();
 
         for (Business business : businesses) {
             String businessCategory = business.getBusinessCategory();
 
             if (businessCategory.contains(category)) {
                 businessesByCategory.add(business);
+            } else {
+                noCategory.add(business);
             }
-
-        }System.out.println(businessesByCategory);
+        }
         model.addAttribute("businesses", businessesByCategory);
         return "browse-list";
-
-
-        //model.addAttribute("restaurants", result);
-        //if (business.getBusinessCategory().equals(category)){
-        //System.out.println(business);
-                /* if(result.equals("restaurant")){
-            ArrayList<Business> restaurants = new ArrayList();
-            restaurants.add(result.category);*/
     }
 }
