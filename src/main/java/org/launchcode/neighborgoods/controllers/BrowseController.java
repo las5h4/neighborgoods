@@ -39,9 +39,8 @@ public class BrowseController {
 
             if (businessCategory.contains(category)) {
                 businessesByCategory.add(business);
-            } else {
-                noCategory.add(business);
             }
+
         }
         model.addAttribute("businesses", businessesByCategory);
         return "browse-list";

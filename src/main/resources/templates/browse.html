@@ -17,14 +17,6 @@
         <td>
             <a th:href="@{/business}">View All</a>
         </td>
-        <td th:each="category : ${categories}">
-            <a th:href="@{/business}" th:text="${category.categoryName}"></a>
-        </td>
-    </tr>
-    <tr>
-        <td>
-            <a th:href="@{/business}">View All</a>
-        </td>
         <td>
             <a th:href="@{/browse/restaurant}">Restaurants</a>
         </td>
@@ -32,7 +24,19 @@
             <a th:href="@{/browse/retail}">Retail</a>
         </td>
         <td>
-            <a th:href="@{/business}">Other</a>
+            <a th:href="@{/browse/grocery}">Grocery</a>
+        </td>
+        <td>
+            <a th:href="@{/browse/beauty}">Beauty</a>
+        </td>
+        <td>
+            <a th:href="@{/browse/home}">Home</a>
+        </td>
+        <td>
+            <a th:href="@{/browse/auto}">Auto</a>
+        </td>
+        <td>
+            <a th:href="@{/business/other}">Other</a>
         </td>
 
        <!-- <li th:each="category : ${categories}">

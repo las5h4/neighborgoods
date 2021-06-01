@@ -2,13 +2,13 @@ package org.launchcode.neighborgoods.enums;
 
 public enum Categories {
 
-    RESTAURANTS("Restaurants"),
-    RETAIL ("Retail"),
-    //GROCERY("Grocery"),
-    //BEAUTY("Beauty"),
-    //HOME_SERVICES("Home Services"),
-    //AUTO_SERVICES("Auto Services"),
-    OTHER("Other");
+    RESTAURANTS("restaurant"),
+    RETAIL ("retail"),
+    GROCERY("grocery"),
+    BEAUTY("beauty"),
+    HOME_SERVICES("home"),
+    AUTO_SERVICES("auto"),
+    OTHER("other");
 
     private String categoryName;
 
