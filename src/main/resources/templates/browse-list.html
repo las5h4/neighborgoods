@@ -47,8 +47,17 @@ tr:nth-child(even) {
             </td>
         </tr>
     </table>
-
-</div>
-
 </body>
 </html>
+        <!--<div class="container body-content">
+            <h2>Businesses</h2>
+            <ul>
+                <li th:each="business : ${businessesByCategory}">
+                    <a th:href="@{'/business/view/' + ${business.id}}" th:text="${business.businessName}"></a>
+                    <input type="radio" class="star" name="rating" value="1" />
+                </li>
+            </ul>
+            <a th:href="@{'/business/add'}">Add Business</a>
+
+</div>-->
+

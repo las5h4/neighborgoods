@@ -45,26 +45,16 @@ public class BrowseController {
         ArrayList<Business> businessesByCategory = new ArrayList<>();
         ArrayList<Business> extraArray = new ArrayList<>();
 
+
         for (Business business : businesses) {
             String businessCategory = business.getBusinessCategory();
-            System.out.println(businessCategory);
 
-            //String lowercaseBusinessCategory = businessCategory;
-            //System.out.println(lowercaseBusinessCategory);
-
-            if (businessCategory == category) {
-
-                businessesByCategory.add(1, business);
-                //businessesByCategory.add(business);
-
-            } else {
-                extraArray.add(business);
-                //}
-//why is this not displaying? figure out what to do with null
-                //maybe try/catch, maybe else statement, idk either way it's trying to return null so that's blocking it
+            if (businessCategory.contains(category)) {
+                businessesByCategory.add(business);
             }
 
-        }model.addAttribute("businesses", businessesByCategory);
+        }System.out.println(businessesByCategory);
+        model.addAttribute("businesses", businessesByCategory);
         return "browse-list";
 
 
