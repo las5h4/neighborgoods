@@ -11,10 +11,15 @@ public enum SubCategories {
     CLOTHING("clothing"),
     GIFTS("gifts"),
     GROCERY("grocery"),
-    GAS_STATION("gas"),
+    GAS_STATION("gas station"),
+    HAIR_SALON("hair salon"),
+    NAIL_SALON("nail salon"),
+    SPA("spa"),
     PLUMBER("plumber"),
     ELECTRICIAN("electrician"),
-    HOME_CLEANERS("cleaners");
+    HOME_CLEANERS("home cleaners"),
+    CAR_WASH("car wash"),
+    AUTO_REPAIR("auto repair");
 
     private String subCategoryName;
 
