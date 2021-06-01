@@ -12,6 +12,9 @@
     <p>Click the button to sort the table alphabetically, by name:</p>
     <p><button onclick="sortTable()">Sort</button></p>
 
+    <p><a th:href="@{/business}">View All</a>
+        <a th:href="@{/browse}">Back To Browse</a></p>
+
     <table>
         <style>
 table {
@@ -29,6 +32,7 @@ tr:nth-child(even) {
   background-color: #f2f2f2
 }
 </style>
+
         <tr th:each="business : ${businesses}">
             <td>
                 <p>
