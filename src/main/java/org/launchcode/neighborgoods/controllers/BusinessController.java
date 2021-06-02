@@ -1,5 +1,8 @@
 package org.launchcode.neighborgoods.controllers;
 
+import org.launchcode.neighborgoods.enums.Categories;
+import org.launchcode.neighborgoods.enums.OwnerTag;
+import org.launchcode.neighborgoods.enums.SubCategories;
 import org.launchcode.neighborgoods.models.Business;
 import org.launchcode.neighborgoods.models.data.BusinessRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +31,9 @@ public class BusinessController {
     @GetMapping("add")
     public String displayAddBusinessForm(Model model){
         model.addAttribute(new Business());
+        model.addAttribute("ownerTag", OwnerTag.values());
+        model.addAttribute("categories", Categories.values());
+        model.addAttribute("subcategories", SubCategories.values());
         return "business/add";
     }
 
