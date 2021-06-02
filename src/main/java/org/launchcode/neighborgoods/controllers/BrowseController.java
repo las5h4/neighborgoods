@@ -2,13 +2,11 @@
 package org.launchcode.neighborgoods.controllers;
 
 import org.launchcode.neighborgoods.enums.Categories;
-import org.launchcode.neighborgoods.enums.SubCategories;
 import org.launchcode.neighborgoods.models.Business;
 import org.launchcode.neighborgoods.models.data.BusinessRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -38,7 +36,6 @@ public class BrowseController {
 
         return "browse";
     }
-
 
     @RequestMapping("browse")
     public String browseByCategoryType(Model model, @RequestParam String column, @RequestParam String value){

@@ -86,12 +86,6 @@ public class LoginController {
             return "login";
         }
 
-//        User newUser = new User(loginFormDTO.getUsername(), loginFormDTO.getEmail(), loginFormDTO.getPassword());
-//        userRepository.save(newUser);
-//        setUserInSession(request.getSession(), newUser);
-
-
-
-        return "redirect:/index";
+        return "redirect:";
     }
 }

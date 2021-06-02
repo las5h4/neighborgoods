@@ -53,6 +53,7 @@ public class AuthenticationController {
         model.addAttribute("title", "Register");
         return "register";
     }
+
     @PostMapping("/register")
     public String processRegistrationForm(@ModelAttribute @Valid RegisterFormDTO registerFormDTO,
                                           Errors errors, HttpServletRequest request,
