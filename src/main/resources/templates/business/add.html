@@ -61,14 +61,18 @@
     </div>
 
     <div class="form-group">
-        <label th:for="ownerType">Owner Type</label>
-        <select th:field="${business.ownerType}">
-            <option th:each="owner : ${ownerTag}"
+
+        <label th:for="businessTag">Business Tag</label>
+        <select th:field="${business.businessTag}">
+            <option th:each="owner : ${businessTag}"
                     th:value="${owner.tagName}"
                     th:text="${owner.tagName}"
             ></option>
         </select>
-        <span th:errors="${business.ownerType}" class="error"></span>
+        <span th:errors="${business.businessTag}" class="error"></span>
+<!--         <label th:for="businessTag">Business Tag</label>
+        <input class="form-control" th:field="${business.businessTag}" />
+        <span th:errors="${business.businessTag}" class="error"></span> -->
     </div>
 
     <div class="form-group">
@@ -92,6 +96,17 @@
         </select>
         <span th:errors="${business.businessSubCategory}" class="error"></span>
     </div>
+
+    <div class="form-group">
+        <label th:for="onlineShopping">Does this business have online shopping available? </label>
+        <div class="custom-control custom-radio custom-control-inline">
+            <input type="radio" id="yes" name="yes" class="custom-control-input" value="1">
+            <label class="custom-control-label" for="yes">yes</label>
+        </div>
+        <div class="custom-control custom-radio custom-control-inline">
+            <input type="radio" id="no" name="no" class="custom-control-input" value="0">
+            <label class="custom-control-label" for="no">no</label>
+        </div>
 
     <input type="submit" value="Add Business" />
 </form>
