@@ -4,10 +4,12 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
 
 @Entity
+@Table(name="user")
 public class User extends AbstractEntity {
 
     @NotNull
@@ -24,7 +26,7 @@ public class User extends AbstractEntity {
 
     @NotNull
     @Column(name = "zipcode")
-    private int zipcode;
+    private String zipcode;
 
     @NotNull
     @Column
@@ -32,7 +34,9 @@ public class User extends AbstractEntity {
 
     private static final BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 
-    public User(String username, String email, String address, int zipcode, String password) {
+    public User() {}
+
+    public User(String username, String email, String address, String zipcode, String password) {
         this.username = username;
         this.address = address;
         this.zipcode = zipcode;
@@ -40,19 +44,15 @@ public class User extends AbstractEntity {
         this.pwHash = password;
     }
 
-    public User(String username, String email, String password) {
-        super();
-    }
-
     public String getUsername() {
         return username;
     }
 
-    public String getEmail() { return email; }
-
     public String getAddress() { return address; }
 
-    public int getZipcode() { return zipcode; }
+    public String getEmail() { return email; }
+
+    public String getZipcode() { return zipcode; }
 
     public boolean isMatchingPassword(String password) { return encoder.matches(password, pwHash); }
 

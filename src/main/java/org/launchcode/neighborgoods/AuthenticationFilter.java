@@ -1,5 +1,6 @@
 package org.launchcode.neighborgoods;
 
+import org.launchcode.neighborgoods.controllers.AuthenticationController;
 import org.launchcode.neighborgoods.models.User;
 import org.launchcode.neighborgoods.models.data.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +19,7 @@ public class AuthenticationFilter implements HandlerInterceptor {
     UserRepository userRepository;
 
     @Autowired
-    org.launchcode.neighborgoods.controllers.AuthenticationController authenticationController;
+    AuthenticationController authenticationController;
 
     private static final List<String> whitelist = Arrays.asList("/index", "/login", "/register", "/logout", "/css");
 

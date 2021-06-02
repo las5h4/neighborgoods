@@ -2,7 +2,6 @@ package org.launchcode.neighborgoods.controllers;
 
 import org.launchcode.neighborgoods.models.User;
 import org.launchcode.neighborgoods.models.data.UserRepository;
-import org.launchcode.neighborgoods.models.dto.LoginFormDTO;
 import org.launchcode.neighborgoods.models.dto.RegisterFormDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -21,8 +20,9 @@ import java.util.Optional;
 public class AuthenticationController {
 
     @Autowired
-    private UserRepository userRepository;
+    UserRepository userRepository;
     private static final String userSessionKey = "user";
+
 
     public User getUserFromSession(HttpSession session) {
         Integer userId = (Integer) session.getAttribute(userSessionKey);
@@ -47,56 +47,6 @@ public class AuthenticationController {
         session.setAttribute("username", user.getUsername());
     }
 
-    @GetMapping("/login")
-    public String displayLoginForm(Model model) {
-        model.addAttribute(new LoginFormDTO());
-        model.addAttribute("title", "Login");
-        return "login";
-    }
-
-    @PostMapping("/login")
-    public String processLoginForm(@ModelAttribute @Valid LoginFormDTO loginFormDTO,
-                                          Errors errors, HttpServletRequest request,
-                                          Model model) {
-
-        if (errors.hasErrors()) {
-            model.addAttribute("title", "Login");
-            return "login";
-        }
-
-        User existingUser = userRepository.findByUsername(loginFormDTO.getUsername());
-
-        if (existingUser == null) {
-            errors.rejectValue("username", "username.isEmpty()", "Please enter a valid user name");
-            model.addAttribute("title", "Login");
-            return "login";
-        }
-
-        String password = loginFormDTO.getPassword();
-        String verifyPassword = loginFormDTO.getVerifyPassword();
-        if (!password.equals(verifyPassword)) {
-            errors.rejectValue("password", "passwords.mismatch", "Passwords do not match");
-            model.addAttribute("title", "Login");
-            return "login";
-        }
-
-        String email = loginFormDTO.getEmail();
-        String verifyEmail= loginFormDTO.getVerifyEmail();
-        if (!email.equals(verifyEmail)) {
-            errors.rejectValue("email", "email.mismatch", "Email address does not match");
-            model.addAttribute("title", "Login");
-            return "login";
-        }
-
-        User newUser = new User(loginFormDTO.getUsername(), loginFormDTO.getEmail(), loginFormDTO.getPassword());
-        userRepository.save(newUser);
-        setUserInSession(request.getSession(), newUser);
-
-        return "redirect:";
-    }
-
-
-
     @GetMapping("/register")
     public String displayRegistrationForm(Model model) {
         model.addAttribute(new RegisterFormDTO());
@@ -116,7 +66,7 @@ public class AuthenticationController {
         User existingUser = userRepository.findByUsername(registerFormDTO.getUsername());
 
         if (existingUser != null) {
-            errors.rejectValue("username", "username.alreadyExists", "A user with that name already exists");
+            errors.rejectValue("username", "username.alreadyexists", "A user with that name already exists");
             model.addAttribute("title", "Register");
             return "register";
         }
@@ -124,7 +74,15 @@ public class AuthenticationController {
         String password = registerFormDTO.getPassword();
         String verifyPassword = registerFormDTO.getVerifyPassword();
         if (!password.equals(verifyPassword)) {
-            errors.rejectValue("password", "passwords.mismatch", "Passwords do not match");
+            errors.rejectValue("verifyPassword", "passwords.mismatch", "Passwords do not match");
+            model.addAttribute("title", "Register");
+            return "register";
+        }
+
+        String email = registerFormDTO.getEmail();
+        String verifyEmail = registerFormDTO.getVerifyEmail();
+        if (!email.equals(verifyEmail)) {
+            errors.rejectValue("verifyEmail", "email.mismatch", "Email does not match");
             model.addAttribute("title", "Register");
             return "register";
         }
@@ -135,9 +93,6 @@ public class AuthenticationController {
 
         return "redirect:";
     }
-    @GetMapping(value = "/logoutconfirm")
-    public String logout(HttpServletRequest request){
-        request.getSession().invalidate();
-        return "logoutconfirm";
-    }
+
+
 }

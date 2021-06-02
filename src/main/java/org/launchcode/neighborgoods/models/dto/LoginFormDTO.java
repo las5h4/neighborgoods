@@ -9,13 +9,15 @@ public class LoginFormDTO {
     @Size(min = 3, max = 30, message = "Invalid username. Must be between 3 and 30 characters.")
     private String username;
 
-
+    @NotNull
+    @NotBlank
     @Size(min = 3, max = 30)
     private String address;
 
-    @Min(3)
-    @Max(7)
-    private int zipcode;
+    @NotNull
+    @NotBlank
+    @Size(min=5, max=11)
+    private String zipcode;
 
     @NotNull
     @NotBlank
@@ -34,9 +36,9 @@ public class LoginFormDTO {
 
     public void setAddress(String address) { this.address = address; }
 
-    public int getZipcode() { return zipcode; }
+    public String getZipcode() { return zipcode; }
 
-    public void setZipcode(int zipcode) { this.zipcode = zipcode; }
+    public void setZipcode(String zipcode) { this.zipcode = zipcode; }
 
     public String getUsername() {
         return username;
