@@ -2,26 +2,24 @@ package org.launchcode.neighborgoods.enums;
 
 public enum SubCategories {
 
-    BREAKFAST("Breakfast"),
-    DINNER("Dinner"),
-    CAFE("Cafe"),
-    COFFEE_TEA("Coffee/Tea"),
-    DESSERT("Dessert"),
-    BARS("Bars"),
-    CLOTHING("Clothing Store"),
-    HOME_GOODS("Home Goods"),
-    GIFTS("Gifts"),
-    GROCERY("Grocery"),
-    GAS_STATION("Gas Station"),
-    CONVENIENCE_STORE("Convenience Store"),
-    HAIR_SALON("Hair Salon"),
-    NAIL_SALON("Nail Salon"),
-    SPA("Spa"),
-    PLUMBER("Plumber"),
-    ELECTRICIAN("Electrician"),
-    HOME_CLEANERS("Home Cleaners"),
-    CAR_WASH("Car Wash"),
-    AUTO_REPAIR("Auto Repair");
+    BREAKFAST("breakfast"),
+    DINNER("dinner"),
+    CAFE("cafe"),
+    COFFEE("coffee"),
+    DESSERT("dessert"),
+    BARS("bars"),
+    CLOTHING("clothing"),
+    GIFTS("gifts"),
+    GROCERY("grocery"),
+    GAS_STATION("gas station"),
+    HAIR_SALON("hair salon"),
+    NAIL_SALON("nail salon"),
+    SPA("spa"),
+    PLUMBER("plumber"),
+    ELECTRICIAN("electrician"),
+    HOME_CLEANERS("home cleaners"),
+    CAR_WASH("car wash"),
+    AUTO_REPAIR("auto repair");
 
     private String subCategoryName;
 
