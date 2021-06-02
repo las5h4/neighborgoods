@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 @Controller
 @RequestMapping("browse")
@@ -36,13 +35,12 @@ public class BrowseController {
 
         for (Business business : businesses) {
             String businessCategory = business.getBusinessCategory();
-
             if (businessCategory.contains(category)) {
                 businessesByCategory.add(business);
             }
-
         }
         model.addAttribute("businesses", businessesByCategory);
         return "browse-list";
     }
+
 }
