@@ -86,6 +86,6 @@ public class LoginController {
             return "login";
         }
 
-        return "redirect:";
+        return "redirect:/welcome";
     }
 }
