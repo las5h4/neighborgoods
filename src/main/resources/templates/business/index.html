@@ -8,6 +8,10 @@
 <body>
 <div class="container body-content">
     <h2>Businesses</h2>
+<!--    add links to filter search results-->
+    <b>Filter by:</b>
+    Zip Code
+    <p></p>
     <ul>
         <li th:each="business : ${business}">
             <a th:href="@{'/business/view/' + ${business.id}}" th:text="${business.businessName}"></a>
