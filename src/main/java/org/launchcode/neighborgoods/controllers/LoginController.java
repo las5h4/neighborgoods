@@ -64,15 +64,17 @@ public class LoginController {
 
         User existingUser = userRepository.findByUsername(loginFormDTO.getUsername());
 
-        if (existingUser == null) {
-            errors.rejectValue("username", "username.isEmpty()", "Please enter a valid user name");
+        String username = loginFormDTO.getUsername();
+        String verifyUsername = loginFormDTO.getVerifyUsername();
+        if (verifyUsername.isEmpty() || !username.equals(verifyUsername) || existingUser == null) {
+            errors.rejectValue("username", "username.mismatch", "Please enter a valid user name");
             model.addAttribute("title", "Login");
             return "login";
         }
 
         String password = loginFormDTO.getPassword();
         String verifyPassword = loginFormDTO.getVerifyPassword();
-        if (!password.equals(verifyPassword)) {
+        if (!password.equals(verifyPassword) || verifyPassword.isEmpty()) {
             errors.rejectValue("password", "passwords.mismatch", "Passwords do not match");
             model.addAttribute("title", "Login");
             return "login";
@@ -80,12 +82,16 @@ public class LoginController {
 
         String email = loginFormDTO.getEmail();
         String verifyEmail= loginFormDTO.getVerifyEmail();
-        if (!email.equals(verifyEmail)) {
+        if (!email.equals(verifyEmail) || verifyEmail.isEmpty()) {
             errors.rejectValue("email", "email.mismatch", "Email address does not match");
             model.addAttribute("title", "Login");
             return "login";
         }
 
-        return "redirect:/welcome";
+//        User user = new User(loginFormDTO.getUsername(), loginFormDTO.getEmail(), loginFormDTO.getPassword());
+//        userRepository.findByUsername(username);
+//        setUserInSession(request.getSession(), user);
+
+        return "index";
     }
 }

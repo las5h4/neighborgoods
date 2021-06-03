@@ -11,24 +11,22 @@
 <p>New here? <a href="register">Register for an account.</a></p>
 <form method="post">
     <div class="form-group">
-        <label th:for="username">Username
+        <label th:for="username" th:text="Username"></label>
             <input class="form-control" th:field="${loginFormDTO.username}">
-        </label>
         <p class="error" th:errors="${loginFormDTO.username}"></p>
     </div>
     <div class="form-group">
-        <label>Email
+        <label th:for="email" th:text="Email"></label>
             <input class="form-control" th:field="${loginFormDTO.email}" type="email" />
-        </label>
         <p class="error" th:errors="${loginFormDTO.email}"></p>
     </div>
     <div class="form-group">
-        <label>Password
+        <label th:for="password" th:text="Password"></label>
             <input class="form-control" th:field="${loginFormDTO.password}" type="password">
-        </label>
         <p class="error" th:errors="${loginFormDTO.password}"></p>
     </div>
     <input type="submit" class="btn btn-primary" value="Log In" />
+
 </form>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8" crossorigin="anonymous"></script>
 </body>
