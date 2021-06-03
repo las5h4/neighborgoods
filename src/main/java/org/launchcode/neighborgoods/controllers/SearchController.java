@@ -20,12 +20,18 @@ public class SearchController {
     private BusinessRepository businessRepository;
 
     @RequestMapping("search")
-    public String displaySearchResults(Model model, @RequestParam(required = false) String searchTerm){
+    public String displaySearchResults(Model model, @RequestParam(required = false) String searchTerm, @RequestParam(required = false) String filterTerm){
         if (searchTerm != null) {
             Iterable <Business> allBusinesses = businessRepository.findAll();
             ArrayList<Business> matchingBusinesses = BusinessData.findByValue(searchTerm, allBusinesses);
             model.addAttribute("business", matchingBusinesses);
-            return "business/index";
+                if (filterTerm != null){
+                    ArrayList<Business> filteredBusinesses = BusinessData.findByValue(filterTerm, matchingBusinesses);
+                    model.addAttribute("business", filteredBusinesses);
+                    return "business/index";
+                } else {
+                    return "business/index";
+                }
         } else {
             return "search";
         }

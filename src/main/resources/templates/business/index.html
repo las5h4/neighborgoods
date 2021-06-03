@@ -9,8 +9,9 @@
 <div class="container body-content">
     <h2>Businesses</h2>
 <!--    add links to filter search results-->
-    <b>Filter by:</b>
-    Zip Code
+    <label for="filterTerm">Filter by:</label>
+    <input type="text" name="filterTerm" id="filterTerm" />
+    <input type="submit" value="Filter" />
     <p></p>
     <ul>
         <li th:each="business : ${business}">
