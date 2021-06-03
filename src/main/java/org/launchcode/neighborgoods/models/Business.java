@@ -5,6 +5,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import java.util.Objects;
+import java.util.Date;
 
 @Entity
 public class Business {
@@ -45,6 +46,8 @@ public class Business {
     public Business (String businessName, String streetAddress, String city, String state, String zipCode,
                      String phoneNumber, String website, String ownerName, String email, String businessTag,
                      String businessCategory, String businessSubCategory, boolean onlineShopping){
+        Object autoDated = new Date();
+        this.dateAdded = String.valueOf(autoDated);
         this.businessName = businessName;
         this.streetAddress = streetAddress;
         this.city = city;
@@ -64,7 +67,7 @@ public class Business {
         return id;
     }
 
-    public String getDateAdded() {
+    public Object getDateAdded() {
         return dateAdded;
     }
 
@@ -144,7 +147,7 @@ public class Business {
         return businessTag;
     }
 
-    public void setOwnerType(String businessTag) {
+    public void setBusinessTag(String businessTag) {
         this.businessTag = businessTag;
     }
 

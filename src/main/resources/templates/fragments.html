@@ -22,7 +22,7 @@
 
             </li>
             <li class="nav-item">
-                <a class="nav-link px-3" href="map">Map</a>
+                <a class="nav-link px-3" th:href="map">Map</a>
             </li>
 
             <li class="nav-item dropdown">
@@ -34,16 +34,17 @@
                     <a class="dropdown-item" href="#">Favorites</a>
                     <a class="dropdown-item" th:href="@{'/business/add/'}">Add Business</a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">Sign Out</a>
+                    <a class="dropdown-item" href="logoutconfirm">Sign Out</a>
                 </div>
             </li>
             <li class="nav-item">
-                <a class="nav-link px-3" href="#">Login / Register</a>
+                <a class="nav-link px-3" href="login">Login / Register</a>
             </li>
-            <form class="d-flex px-3">
-                <input class="form-control me-2" type="search" placeholder="Enter Business, Category, etc." aria-label="Search">
-                <button class="btn btn-outline-success px-3" type="submit">Search</button>
-            </form>
+            <li class="nav-item">
+
+                <a class="nav-link px-3" th:href="search">Search</a>
+
+            </li>
         </ul>
 
     </div>
