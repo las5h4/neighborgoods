@@ -74,7 +74,7 @@ public class AuthenticationController {
 
         String password = registerFormDTO.getPassword();
         String verifyPassword = registerFormDTO.getVerifyPassword();
-        if (!password.equals(verifyPassword)) {
+        if (!password.equals(verifyPassword)  || verifyPassword.isEmpty()) {
             errors.rejectValue("verifyPassword", "passwords.mismatch", "Passwords do not match");
             model.addAttribute("title", "Register");
             return "register";
@@ -82,7 +82,7 @@ public class AuthenticationController {
 
         String email = registerFormDTO.getEmail();
         String verifyEmail = registerFormDTO.getVerifyEmail();
-        if (!email.equals(verifyEmail)) {
+        if (!email.equals(verifyEmail) || verifyEmail.isEmpty()) {
             errors.rejectValue("verifyEmail", "email.mismatch", "Email does not match");
             model.addAttribute("title", "Register");
             return "register";
