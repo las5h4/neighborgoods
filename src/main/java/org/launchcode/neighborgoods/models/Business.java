@@ -147,7 +147,7 @@ public class Business {
         return businessTag;
     }
 
-    public void setOwnerType(String businessTag) {
+    public void setBusinessTag(String businessTag) {
         this.businessTag = businessTag;
     }
 
