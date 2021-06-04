@@ -8,6 +8,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 @Controller
 @RequestMapping("browse")
 public class BrowseController {
@@ -24,7 +27,7 @@ public class BrowseController {
         ArrayList<Business> businesses = new ArrayList<>();
         businessRepository.findAll().forEach(businesses::add);
         ArrayList<Business> businessesByCategory = new ArrayList<>();
-        ArrayList<Business> noCategory = new ArrayList<>();
+
         for (Business business : businesses) {
             String businessCategory = business.getBusinessCategory();
             if (businessCategory.contains(category)) {
@@ -34,4 +37,18 @@ public class BrowseController {
         model.addAttribute("businesses", businessesByCategory);
         return "browse-list";
     }
+
+   /* @GetMapping
+    public String sortBusinessesByName(Model model){
+        ArrayList<Business> businessArrayList = new ArrayList<>();
+        businessRepository.findAll().forEach(businessArrayList::add);
+        ArrayList<Business> businessesToSort = new ArrayList<>();
+
+        for (Business business : businessArrayList){
+            businessesToSort.add(business);
+            businessesToSort.sort();
+        }
+
+
+    } return "";*/
 }
