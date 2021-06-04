@@ -12,14 +12,18 @@
     <b>Filter by:</b>
     Zip Code
     <p></p>
+    <form action="favorites" method="POST">
     <ul>
         <li th:each="business : ${business}">
             <a th:href="@{'/business/view/' + ${business.id}}" th:text="${business.businessName}"></a>
             <span class="star-rating">
-            <input type="checkbox" name="rating" value="1"><i></i>
+            <input type="checkbox" name="rating" th:value="${business.id}"><i></i>
+
             </span>
         </li>
     </ul>
+    <!--<input type="submit" value="Add to Favorites">-->
+    </form>
     <a th:href="@{'/business/add'}">Add Business</a>
 
     <style>
