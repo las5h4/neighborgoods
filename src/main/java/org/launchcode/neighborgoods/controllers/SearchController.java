@@ -25,13 +25,12 @@ public class SearchController {
             Iterable <Business> allBusinesses = businessRepository.findAll();
             ArrayList<Business> matchingBusinesses = BusinessData.findByValue(searchTerm, allBusinesses);
             model.addAttribute("business", matchingBusinesses);
-                if (filterTerm != null){
-                    ArrayList<Business> filteredBusinesses = BusinessData.findByValue(filterTerm, matchingBusinesses);
-                    model.addAttribute("business", filteredBusinesses);
-                    return "business/index";
-                } else {
-                    return "business/index";
-                }
+//                if (filterTerm != null){
+//                    ArrayList<Business> filteredBusinesses = BusinessData.findByValue(filterTerm, matchingBusinesses);
+//                    model.addAttribute("business", filteredBusinesses);
+//                    return "business/index";
+//                } else {
+            return "business/index";
         } else {
             return "search";
         }
