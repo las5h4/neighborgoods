@@ -9,6 +9,8 @@
 
 <!--<nav th:replace="fragments :: page-header"></nav>-->
 
+<p><a th:href="@{/business}">Back</a></p>
+
 <div>
     <p th:text="${'Business: ' + business.businessName}"></p>
     <p th:text="${'Location: ' + business.streetAddress + ' ' + business.city + ', ' + business.state + ' ' + business.zipCode}"></p>
