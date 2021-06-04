@@ -16,7 +16,8 @@
         <li th:each="business : ${business}">
             <a th:href="@{'/business/view/' + ${business.id}}" th:text="${business.businessName}"></a>
             <span class="star-rating">
-            <input type="radio" name="rating" value="1"><i></i></span>
+            <input type="checkbox" name="rating" value="1"><i></i>
+            </span>
         </li>
     </ul>
     <a th:href="@{'/business/add'}">Add Business</a>
