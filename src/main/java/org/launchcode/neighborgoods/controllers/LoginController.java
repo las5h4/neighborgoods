@@ -66,7 +66,7 @@ public class LoginController {
 
         String username = loginFormDTO.getUsername();
         String verifyUsername = loginFormDTO.getVerifyUsername();
-        if (verifyUsername.isEmpty() || !username.equals(verifyUsername) || existingUser == null) {
+        if (existingUser == null) {
             errors.rejectValue("username", "username.mismatch", "Please enter a valid user name");
             model.addAttribute("title", "Login");
             return "login";
@@ -92,6 +92,6 @@ public class LoginController {
 //        userRepository.findByUsername(username);
 //        setUserInSession(request.getSession(), user);
 
-        return "index";
+        return "welcome";
     }
 }
