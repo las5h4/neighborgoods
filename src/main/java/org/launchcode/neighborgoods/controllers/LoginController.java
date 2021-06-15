@@ -88,10 +88,6 @@ public class LoginController {
             return "login";
         }
 
-//        User user = new User(loginFormDTO.getUsername(), loginFormDTO.getEmail(), loginFormDTO.getPassword());
-//        userRepository.findByUsername(username);
-//        setUserInSession(request.getSession(), user);
-
         return "welcome";
     }
 }
