@@ -64,15 +64,12 @@
 
         <label th:for="businessTag">Business Tag</label>
         <select th:field="${business.businessTag}">
-            <option th:each="owner : ${businessTag}"
+            <option th:each="owner : ${ownerTag}"
                     th:value="${owner.tagName}"
                     th:text="${owner.tagName}"
             ></option>
         </select>
         <span th:errors="${business.businessTag}" class="error"></span>
-<!--         <label th:for="businessTag">Business Tag</label>
-        <input class="form-control" th:field="${business.businessTag}" />
-        <span th:errors="${business.businessTag}" class="error"></span> -->
     </div>
 
     <div class="form-group">
