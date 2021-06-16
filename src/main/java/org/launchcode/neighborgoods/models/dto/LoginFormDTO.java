@@ -11,17 +11,7 @@ public class LoginFormDTO {
 
     @NotNull
     @NotBlank
-    @Size(min = 3, max = 30)
-    private String address;
-
-    @NotNull
-    @NotBlank
-    @Size(min=5, max=11)
-    private String zipcode;
-
-    @NotNull
-    @NotBlank
-    @Size(min = 3, max = 75, message = "Please enter valid email address.")
+    @Size(min = 3, max = 75, message = "Invalid email address.")
     private String email;
 
     @NotNull
@@ -29,24 +19,15 @@ public class LoginFormDTO {
     @Size(min = 5, max = 30, message = "Invalid password. Must be between 5 and 30 characters.")
     private String password;
 
-    public LoginFormDTO() {
-    }
+    public LoginFormDTO() { }
 
-    public String getAddress() { return address; }
+    public String getUsername() { return username; }
 
-    public void setAddress(String address) { this.address = address; }
+    public void setUsername(String username) { this.username = username; }
 
-    public String getZipcode() { return zipcode; }
+    public String verifyUsername;
 
-    public void setZipcode(String zipcode) { this.zipcode = zipcode; }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
+    public String getVerifyUsername() { return verifyUsername; }
 
     public String getEmail() { return email; }
 
@@ -67,5 +48,7 @@ public class LoginFormDTO {
     private void verifyPassword(String password) { this.password = password; }
 
     public String getVerifyPassword() { return password; }
+
+
 }
 
