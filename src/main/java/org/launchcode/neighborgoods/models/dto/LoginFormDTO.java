@@ -11,16 +11,6 @@ public class LoginFormDTO {
 
     @NotNull
     @NotBlank
-    @Size(min = 3, max = 30, message = "Please enter street address.")
-    private String address;
-
-    @NotNull
-    @NotBlank
-    @Size(min=5, max=11, message = "Please enter zipcode.")
-    private String zipcode;
-
-    @NotNull
-    @NotBlank
     @Size(min = 3, max = 75, message = "Invalid email address.")
     private String email;
 
@@ -38,14 +28,6 @@ public class LoginFormDTO {
     public String verifyUsername;
 
     public String getVerifyUsername() { return verifyUsername; }
-
-    public String getAddress() { return address; }
-
-    public void setAddress(String address) { this.address = address; }
-
-    public String getZipcode() { return zipcode; }
-
-    public void setZipcode(String zipcode) { this.zipcode = zipcode; }
 
     public String getEmail() { return email; }
 
