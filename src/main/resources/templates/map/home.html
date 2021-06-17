@@ -4,7 +4,7 @@
       xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>TomTom Mapping Example</title>
+    <title>NeighborGoods Map</title>
     <link rel='stylesheet' type='text/css'
           href='https://api.tomtom.com/maps-sdk-for-web/cdn/5.x/5.63.0/maps/maps.css'>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
@@ -30,10 +30,15 @@
    }
  </style>
     <script src='https://api.tomtom.com/maps-sdk-for-web/cdn/5.x/5.63.0/maps/maps-web.min.js'></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 </head>
 <body>
 
 <nav th:replace="fragments :: navbar"></nav>
+
+<div class="card-block" id="formatted-address"></div>
+<div class="card-block" id="address-components"></div>
+<div class="card-block" id="geometry"></div>
 
 <div class ="row">
     <div class ="column">
@@ -49,7 +54,9 @@
             </tr>
             </thead>
             <tr th:each="business : ${businesses}">
-                <td th:text="${business.businessName}"></td>
+                <td>
+                      <a th:href="@{'/business/view/' + ${business.id}}" th:text="${business.businessName}"></a>
+                </td>
                 <td th:text="${business.streetAddress}"></td>
                 <td th:text="${business.city}"></td>
                 <td th:text="${business.state}"></td>
@@ -94,6 +101,8 @@ businessLocations.forEach(location => {
 
  map.addControl(new tt.FullscreenControl());
  map.addControl(new tt.NavigationControl());
+ console.log("Hello there.");
+
 </script>
 </body>
 </html>
