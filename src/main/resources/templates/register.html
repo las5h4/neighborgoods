@@ -42,6 +42,7 @@
     <form-group>
         <label th:for="verifyPassword" th:text="'Verify ' + 'Password'"></label>
         <input class="form-control" th:field="${registerFormDTO.verifyPassword}" type="password" />
+        <p class="error" th:errors="${registerFormDTO.verifyPassword}"></p>
     </form-group>
 
     <input type="submit" class="btn btn-primary" value="Register" />
